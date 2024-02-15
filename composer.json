@@ -1,0 +1,16 @@
+{
+    "name": "leopersan/ia",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Leopersan\\Ia\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Leonardo Persan"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
