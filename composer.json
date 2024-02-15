@@ -1,9 +1,9 @@
 {
-    "name": "leopersan/ia",
+    "name": "leopersan/ml",
     "type": "library",
     "autoload": {
         "psr-4": {
-            "Leopersan\\Ia\\": "src/"
+            "Leopersan\\Ml\\": "src/"
         }
     },
     "authors": [
