@@ -4,7 +4,10 @@
     "autoload": {
         "psr-4": {
             "Leopersan\\Ml\\": "src/"
-        }
+        },
+        "files": [
+            "src/functions.php"
+        ]
     },
     "authors": [
         {
