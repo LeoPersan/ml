@@ -34,11 +34,11 @@ function train_model(
             $model     = update_weights($model, $batch, $predicted, $result_batches[$b_key], $learning_rate);
             // dump($model);
         }
-        if ($epoch % 100 == 0) {
-            $mse = mean_squared_error($predicted, $result);
-            echo "Epoch: " . $epoch . " Mean Squared Error: " . $mse . "\n";
-            echo "Weights: " . implode(", ", $model['weights']) . " Bias: " . $model['bias'] . "\n";
-        }
+        // if ($epoch % 100 == 0) {
+        //     $mse = mean_squared_error($predicted, $result);
+        //     echo "Epoch: " . $epoch . " Mean Squared Error: " . $mse . "\n";
+        //     echo "Weights: " . implode(", ", $model['weights']) . " Bias: " . $model['bias'] . "\n";
+        // }
     }
 
     return $model;
@@ -48,12 +48,11 @@ function update_weights(array $model, array $batch, array $predicted, array $res
 {
     $gradient = 0;
     foreach ($predicted as $key => $value) {
-        $gradient += ($value - $result[$key]) / $result[$key];
+        $gradient += ($value - $result[$key]);
     }
     $gradient /= count($predicted);
     foreach ($model['weights'] as $key => $weight) {
-        $model['weights'][$key] -= $learning_rate * $gradient * $batch[0][$key];
-        // $model['weights'][$key] -= $learning_rate * $gradient * $batch[0][$key];
+        $model['weights'][$key] -= $learning_rate * $gradient * (array_sum(array_column($batch, $key)) / count($batch));
     }
     $model['bias'] -= $learning_rate * $gradient * $model['bias'];
 
